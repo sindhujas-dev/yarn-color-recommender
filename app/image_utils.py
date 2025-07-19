@@ -2,9 +2,9 @@ from PIL import Image
 import numpy as np
 
 # load image, resize, and create a 2d array of rgb pixels
-def load_and_preprocess_image(image_path, resize_to=(200, 200)):
+def load_and_preprocess_image(image: Image.Image, resize_to=(200, 200)):
     # load image and convert image to RGBA color mode
-    im = Image.open(image_path).convert('RGBA')
+    im = image.convert('RGBA')
 
     # print("Image size before resizing:", im.size)
 

@@ -1,3 +1,5 @@
+# testing file for yarn color extractor
+
 # import rembg to remove background
 from rembg import remove
 
