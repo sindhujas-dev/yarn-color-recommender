@@ -3,8 +3,8 @@ import numpy as np
 
 # load image, resize, and create a 2d array of rgb pixels
 def load_and_preprocess_image(image_path, resize_to=(200, 200)):
-    # load image and convert image to RGB color mode
-    im = Image.open(image_path).convert('RGB')
+    # load image and convert image to RGBA color mode
+    im = Image.open(image_path).convert('RGBA')
 
     # print("Image size before resizing:", im.size)
 
@@ -15,9 +15,10 @@ def load_and_preprocess_image(image_path, resize_to=(200, 200)):
     im_array = np.array(im)
 
     # reshaping image array to flat list of pixels 
-    # ex: (200x200=40000 pixels, 3 RGB values per pixel)
-    pixels = im_array.reshape(-1, 3)
+    # keep only RGB values (ignore alpha)
+    mask = im_array[:, :, 3] > 0 
+    rgb_pixels = im_array[:, :, :3][mask]
 
-    return pixels
+    return rgb_pixels
 
 
