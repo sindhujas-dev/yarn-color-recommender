@@ -1,3 +1,5 @@
+# main application file that handles image upload, bg removal, and displays color results in UI
+
 import streamlit as st
 from PIL import Image
 import numpy as np
@@ -11,9 +13,13 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from app.image_utils import load_and_preprocess_image
 from app.color_clustering import extract_dominant_colors
 
+# sets tab name and layout for app
 st.set_page_config(page_title="Yarn Color Recommender", layout="centered")
+
+# set title header for app
 st.title("🎨 Yarn Color Recommender")
 
+# saves uploaded image to a variable
 uploaded_file = st.file_uploader("Upload an image of yarn", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:

@@ -1,3 +1,5 @@
+# creates a reusable function that loads and preprocesses images, then returns the RGB pixels from the image
+
 from PIL import Image
 import numpy as np
 
